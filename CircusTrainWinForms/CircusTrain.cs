@@ -15,7 +15,6 @@ namespace CircusTrainWinForms
     {
         readonly Train train = new Train();
         readonly Case testCase = new Case();
-        readonly SortAnimals sortAnimals = new SortAnimals();
 
         public CircusTrain()
         {

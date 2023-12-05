@@ -9,16 +9,16 @@ namespace CircusTrain
 {
     public class Case
     {
-        public List<Animal> Scenario(int smallCarnivore, int mediumCarnivore, int largeCarnivore, int smallHerbivore, int mediumHerbivore, int largeHerbivore)
+        public List<Animal> Scenario(int countSmallCarnivore, int countMediumCarnivore, int countLargeCarnivore, int countSmallHerbivore, int countMediumHerbivore, int countLargeHerbivore)
         {
             List<Animal> scenario = new List<Animal>();
 
-            AddToScenario(scenario, Sizes.Small, Diets.Carnivore, smallCarnivore);
-            AddToScenario(scenario, Sizes.Medium, Diets.Carnivore, mediumCarnivore);
-            AddToScenario(scenario, Sizes.Large, Diets.Carnivore, largeCarnivore);
-            AddToScenario(scenario, Sizes.Small, Diets.Herbivore, smallHerbivore);
-            AddToScenario(scenario, Sizes.Medium, Diets.Herbivore, mediumHerbivore);
-            AddToScenario(scenario, Sizes.Large, Diets.Herbivore, largeHerbivore);
+            AddToScenario(scenario, Sizes.Small, Diets.Carnivore, countSmallCarnivore);
+            AddToScenario(scenario, Sizes.Medium, Diets.Carnivore, countMediumCarnivore);
+            AddToScenario(scenario, Sizes.Large, Diets.Carnivore, countLargeCarnivore);
+            AddToScenario(scenario, Sizes.Small, Diets.Herbivore, countSmallHerbivore);
+            AddToScenario(scenario, Sizes.Medium, Diets.Herbivore, countMediumHerbivore);
+            AddToScenario(scenario, Sizes.Large, Diets.Herbivore, countLargeHerbivore);
                 
             return scenario;
         }
