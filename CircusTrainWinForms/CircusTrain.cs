@@ -15,7 +15,6 @@ namespace CircusTrainWinForms
     {
         readonly Train train = new Train();
         readonly Case testCase = new Case();
-        readonly SortAnimals sortAnimals = new SortAnimals();
 
         public CircusTrain()
         {
@@ -24,24 +23,11 @@ namespace CircusTrainWinForms
 
         private void AddAnimals_Click(object sender, EventArgs e)
         {
-            List<Animal> animals = testCase.Scenario(3, 0, 0, 0, 2, 3);
-            animals = sortAnimals.Sort(animals);
-            train.AddWagons(animals);
+            List<Animal> animals = testCase.Scenario(2, 1, 1, 1, 5, 1);
+            train.DistributeAnimals(animals);
 
-            MessageBox.Show("Aantal wagons: " + train.Wagons.Count.ToString());
-
-            foreach (Wagon wagon in train.Wagons)
-            { 
-                MessageBox.Show("Wagon " + train.Wagons.Count.ToString());
-
-                foreach (Animal animal in wagon.AnimalsInWagon)
-                {
-                    MessageBox.Show(animal.Size.ToString() + " " + animal.Diet.ToString());
-                }
-            }
-
-            lblAnimals.Text = animals.Count.ToString();
-            lblWagons.Text = train.Wagons.Count.ToString();
+            lblAnimals.Text = "Dieren resterend: " + animals.Count.ToString();
+            lblWagons.Text = "Aantal wagons: " + train.Wagons.Count.ToString();
         }
     }
 }
