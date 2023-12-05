@@ -12,6 +12,7 @@ namespace CircusTrain
         private readonly int Size = 10;
         public List<Animal> AnimalsInWagon { get; private set; }
         private bool carnivoreAdded = false;
+        public int WagonNumber { get; set; } = 1;
 
         private int AvailableSpace
         {

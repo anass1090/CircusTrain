@@ -10,7 +10,7 @@ namespace CircusTrain
     {
         public List<Wagon> Wagons { get; private set; }
         private bool addedAllAnimals = false;
-
+        private int WagonAmount { get; set; } 
         //public Train()
         //{
         //    Wagons = new List<Wagon>();
@@ -34,11 +34,15 @@ namespace CircusTrain
 
                 if (!addedAllAnimals)
                 {
-                    var newWagon = new Wagon();
+                    WagonAmount++;
+                    Wagon newWagon = new Wagon();
+                    newWagon.WagonNumber = WagonAmount;
                     newWagon.AddAnimals(animalsToAdd);
                     Wagons.Add(newWagon);
                 }
             }
+
+            WagonAmount = 0;
         }
     }
 }

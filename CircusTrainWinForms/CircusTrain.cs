@@ -26,22 +26,31 @@ namespace CircusTrainWinForms
         {
             List<Animal> animals = testCase.Scenario(3, 0, 0, 0, 2, 3);
             animals = sortAnimals.Sort(animals);
+
             train.AddWagons(animals);
 
-            MessageBox.Show("Aantal wagons: " + train.Wagons.Count.ToString());
-
-            foreach (Wagon wagon in train.Wagons)
-            { 
-                MessageBox.Show("Wagon " + train.Wagons.Count.ToString());
-
-                foreach (Animal animal in wagon.AnimalsInWagon)
+            if(train.Wagons != null)
+            {
+                foreach (Wagon wagon in train.Wagons)
                 {
-                    MessageBox.Show(animal.Size.ToString() + " " + animal.Diet.ToString());
+                    listWagons.Items.Add(wagon.WagonNumber);
                 }
             }
+        }
+        private void ListWagons_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Wagon SelectedWagon = (Wagon)listWagons.SelectedItem;
 
-            lblAnimals.Text = animals.Count.ToString();
-            lblWagons.Text = train.Wagons.Count.ToString();
+            if (SelectedWagon != null)
+            {
+                listAnimalsinWagon.Items.Clear();
+
+                foreach(Animal animal in SelectedWagon.AnimalsInWagon)
+                {
+                    string animalInfo = animal.Size.ToString() + " " + animal.Diet.ToString();
+                    listAnimalsinWagon.Items.Add(animalInfo);
+                }
+            }
         }
     }
 }
