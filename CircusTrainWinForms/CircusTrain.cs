@@ -23,16 +23,18 @@ namespace CircusTrainWinForms
 
         private void AddAnimals_Click(object sender, EventArgs e)
         {
-            List<Animal> animals = testCase.Scenario(3, 0, 0, 0, 2, 3);
-            animals = sortAnimals.Sort(animals);
+            List<Animal> animals = testCase.Scenario((int)numSC.Value, (int)numMC.Value, (int)numLC.Value, (int)numSH.Value, (int)numMH.Value, (int)numLH.Value);
 
-            train.AddWagons(animals);
+            train.DistributeAnimals(animals);
 
             if(train.Wagons != null)
             {
+                listWagons.Items.Clear();
+
                 foreach (Wagon wagon in train.Wagons)
                 {
-                    listWagons.Items.Add(wagon.WagonNumber);
+                    listWagons.Items.Add(wagon);
+                    listWagons.DisplayMember = "WagonNumber";
                 }
             }
         }

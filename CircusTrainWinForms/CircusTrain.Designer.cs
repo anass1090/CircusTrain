@@ -31,25 +31,24 @@
             this.addAnimals = new System.Windows.Forms.Button();
             this.listWagons = new System.Windows.Forms.ListBox();
             this.listAnimalsinWagon = new System.Windows.Forms.ListBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.numSH = new System.Windows.Forms.NumericUpDown();
+            this.numMH = new System.Windows.Forms.NumericUpDown();
+            this.numLC = new System.Windows.Forms.NumericUpDown();
+            this.numSC = new System.Windows.Forms.NumericUpDown();
+            this.numLH = new System.Windows.Forms.NumericUpDown();
+            this.numMC = new System.Windows.Forms.NumericUpDown();
             this.lblSC = new System.Windows.Forms.Label();
             this.lblMC = new System.Windows.Forms.Label();
             this.lblLC = new System.Windows.Forms.Label();
             this.lblSH = new System.Windows.Forms.Label();
             this.lblMH = new System.Windows.Forms.Label();
             this.lblLH = new System.Windows.Forms.Label();
-            this.lblWagonCount = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMC)).BeginInit();
             this.SuspendLayout();
             // 
             // addAnimals
@@ -79,47 +78,47 @@
             this.listAnimalsinWagon.Size = new System.Drawing.Size(204, 264);
             this.listAnimalsinWagon.TabIndex = 2;
             // 
-            // numericUpDown1
+            // numSH
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(165, 32);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 3;
+            this.numSH.Location = new System.Drawing.Point(165, 32);
+            this.numSH.Name = "numSH";
+            this.numSH.Size = new System.Drawing.Size(120, 20);
+            this.numSH.TabIndex = 3;
             // 
-            // numericUpDown2
+            // numMH
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(165, 78);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown2.TabIndex = 4;
+            this.numMH.Location = new System.Drawing.Point(165, 78);
+            this.numMH.Name = "numMH";
+            this.numMH.Size = new System.Drawing.Size(120, 20);
+            this.numMH.TabIndex = 4;
             // 
-            // numericUpDown3
+            // numLC
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(165, 276);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown3.TabIndex = 5;
+            this.numLC.Location = new System.Drawing.Point(165, 276);
+            this.numLC.Name = "numLC";
+            this.numLC.Size = new System.Drawing.Size(120, 20);
+            this.numLC.TabIndex = 5;
             // 
-            // numericUpDown4
+            // numSC
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(165, 177);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown4.TabIndex = 6;
+            this.numSC.Location = new System.Drawing.Point(165, 177);
+            this.numSC.Name = "numSC";
+            this.numSC.Size = new System.Drawing.Size(120, 20);
+            this.numSC.TabIndex = 6;
             // 
-            // numericUpDown5
+            // numLH
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(165, 126);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown5.TabIndex = 7;
+            this.numLH.Location = new System.Drawing.Point(165, 126);
+            this.numLH.Name = "numLH";
+            this.numLH.Size = new System.Drawing.Size(120, 20);
+            this.numLH.TabIndex = 7;
             // 
-            // numericUpDown6
+            // numMC
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(165, 225);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown6.TabIndex = 8;
+            this.numMC.Location = new System.Drawing.Point(165, 225);
+            this.numMC.Name = "numMC";
+            this.numMC.Size = new System.Drawing.Size(120, 20);
+            this.numMC.TabIndex = 8;
             // 
             // lblSC
             // 
@@ -175,44 +174,34 @@
             this.lblLH.TabIndex = 14;
             this.lblLH.Text = "Large Herbivore";
             // 
-            // lblWagonCount
-            // 
-            this.lblWagonCount.AutoSize = true;
-            this.lblWagonCount.Location = new System.Drawing.Point(514, 310);
-            this.lblWagonCount.Name = "lblWagonCount";
-            this.lblWagonCount.Size = new System.Drawing.Size(72, 13);
-            this.lblWagonCount.TabIndex = 15;
-            this.lblWagonCount.Text = "Wagon count";
-            // 
             // CircusTrain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblWagonCount);
             this.Controls.Add(this.lblLH);
             this.Controls.Add(this.lblMH);
             this.Controls.Add(this.lblSH);
             this.Controls.Add(this.lblLC);
             this.Controls.Add(this.lblMC);
             this.Controls.Add(this.lblSC);
-            this.Controls.Add(this.numericUpDown6);
-            this.Controls.Add(this.numericUpDown5);
-            this.Controls.Add(this.numericUpDown4);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numMC);
+            this.Controls.Add(this.numLH);
+            this.Controls.Add(this.numSC);
+            this.Controls.Add(this.numLC);
+            this.Controls.Add(this.numMH);
+            this.Controls.Add(this.numSH);
             this.Controls.Add(this.listAnimalsinWagon);
             this.Controls.Add(this.listWagons);
             this.Controls.Add(this.addAnimals);
             this.Name = "CircusTrain";
             this.Text = "Circus Train";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numMC)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,19 +212,18 @@
         private System.Windows.Forms.Button addAnimals;
         private System.Windows.Forms.ListBox listWagons;
         private System.Windows.Forms.ListBox listAnimalsinWagon;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
+        private System.Windows.Forms.NumericUpDown numSH;
+        private System.Windows.Forms.NumericUpDown numMH;
+        private System.Windows.Forms.NumericUpDown numLC;
+        private System.Windows.Forms.NumericUpDown numSC;
+        private System.Windows.Forms.NumericUpDown numLH;
+        private System.Windows.Forms.NumericUpDown numMC;
         private System.Windows.Forms.Label lblSC;
         private System.Windows.Forms.Label lblMC;
         private System.Windows.Forms.Label lblLC;
         private System.Windows.Forms.Label lblSH;
         private System.Windows.Forms.Label lblMH;
         private System.Windows.Forms.Label lblLH;
-        private System.Windows.Forms.Label lblWagonCount;
     }
 }
 

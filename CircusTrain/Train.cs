@@ -9,63 +9,33 @@ namespace CircusTrain
     public class Train
     {
         public List<Wagon> Wagons { get; private set; }
-        private bool addedAllAnimals = false;
-        private int WagonAmount { get; set; } 
-        //public Train()
-        //{
-        //    Wagons = new List<Wagon>();
-        //}
+        public int WagonAmount { get; private set; }
 
-        public void AddWagons(List<Animal> animalsToAdd)
+        private bool addedAllAnimals = false;
+
+        public Train()
         {
             Wagons = new List<Wagon>();
-
-            while (animalsToAdd.Count > 0)
-            {
-                foreach (var wagon in Wagons)
-                {
-                    wagon.AddAnimals(animalsToAdd);
-
-                    if (animalsToAdd.Count == 0)
-                    {
-                        addedAllAnimals = true;
-                    }
-                }
-
-                if (!addedAllAnimals)
-                {
-                    WagonAmount++;
-                    Wagon newWagon = new Wagon();
-                    newWagon.WagonNumber = WagonAmount;
-                    newWagon.AddAnimals(animalsToAdd);
-                    Wagons.Add(newWagon);
-                }
-            }
-
-            WagonAmount = 0;
         }
 
         public void DistributeAnimals(List<Animal> animalsToAdd)
         {
+            addedAllAnimals = false;
             Wagons = new List<Wagon>();
             SortAnimals sortAnimals = new SortAnimals();
+            
+            List<Animal> animalsToAddAsc = sortAnimals.Sort(animalsToAdd);
+            List<Animal> animalsToAddDesc = sortAnimals.SortDesc(animalsToAdd);
 
-            sortAnimals.Sort(animalsToAdd);
-
-            while (animalsToAdd.Count > 0)
+            while (animalsToAddDesc.Count > 0 || animalsToAddAsc.Count > 0)
             {
-                for (int i = 0; i < Wagons.Count; i++) 
+                for (int i = 0; i < Wagons.Count; i++)
                 {
-                    for (int j = 0; j < animalsToAdd.Count; j++)
+                    foreach(Animal animal in animalsToAddDesc)
                     {
-                        if (animalsToAdd.Count == 0)
+                        if (Wagons[i].TryAddingAnimal(animalsToAddDesc, animal))
                         {
-                            addedAllAnimals = true;
-                            break;
-                        }
-                        if (Wagons[i].TryAddingAnimal(animalsToAdd, animalsToAdd[j]))
-                        {
-                            if (animalsToAdd.Count == 0)
+                            if (animalsToAddDesc.Count == 0)
                             {
                                 addedAllAnimals = true;
                                 break;
@@ -78,10 +48,19 @@ namespace CircusTrain
 
                 if (!addedAllAnimals)
                 {
+                    WagonAmount++;
                     Wagon wagon = new Wagon();
+                    wagon.WagonNumber = WagonAmount;
                     Wagons.Add(wagon);
-                }
+                } 
             }
+
+            WagonAmount = 0;
+        }
+
+        public List<Animal> EfficiencyCheck(List<Animal> animals)
+        {
+            return animals;
         }
     }
 }
