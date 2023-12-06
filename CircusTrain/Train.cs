@@ -9,58 +9,24 @@ namespace CircusTrain
     public class Train
     {
         public List<Wagon> Wagons { get; private set; }
-        public int WagonAmount { get; private set; }
+        private readonly PlaceAnimals placeAnimals = new PlaceAnimals();
 
-        private bool addedAllAnimals = false;
-
-        public Train()
+        public List<Wagon> AddWagons(List<Animal> animalsToAdd)
         {
             Wagons = new List<Wagon>();
-        }
 
-        public void DistributeAnimals(List<Animal> animalsToAdd)
-        {
-            addedAllAnimals = false;
-            Wagons = new List<Wagon>();
-            SortAnimals sortAnimals = new SortAnimals();
-            
-            List<Animal> animalsToAddAsc = sortAnimals.Sort(animalsToAdd);
-            List<Animal> animalsToAddDesc = sortAnimals.SortDesc(animalsToAdd);
+            List<Wagon> WagonsDesc = placeAnimals.AllocateAnimals(animalsToAdd);
+            List<Wagon> WagonsAsc = placeAnimals.AllocateAnimals(animalsToAdd, false);
 
-            while (animalsToAddDesc.Count > 0 || animalsToAddAsc.Count > 0)
+            if(WagonsDesc.Count < WagonsAsc.Count)
             {
-                for (int i = 0; i < Wagons.Count; i++)
-                {
-                    foreach(Animal animal in animalsToAddDesc)
-                    {
-                        if (Wagons[i].TryAddingAnimal(animalsToAddDesc, animal))
-                        {
-                            if (animalsToAddDesc.Count == 0)
-                            {
-                                addedAllAnimals = true;
-                                break;
-                            }
-                            i--;
-                            break;
-                        }
-                    }
-                }
-
-                if (!addedAllAnimals)
-                {
-                    WagonAmount++;
-                    Wagon wagon = new Wagon();
-                    wagon.WagonNumber = WagonAmount;
-                    Wagons.Add(wagon);
-                } 
+                Wagons.AddRange(WagonsDesc);
+                return WagonsDesc;
+            } else
+            {
+                Wagons.AddRange(WagonsAsc);
+                return WagonsAsc;
             }
-
-            WagonAmount = 0;
-        }
-
-        public List<Animal> EfficiencyCheck(List<Animal> animals)
-        {
-            return animals;
         }
     }
 }

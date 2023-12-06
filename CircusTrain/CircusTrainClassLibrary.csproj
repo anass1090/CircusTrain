@@ -44,8 +44,9 @@
     <Compile Include="Animal.cs" />
     <Compile Include="Enums\Diets.cs" />
     <Compile Include="Enums\Sizes.cs" />
-    <Compile Include="SortAnimals.cs" />
-    <Compile Include="Case.cs" />
+    <Compile Include="Logic\PlaceAnimals.cs" />
+    <Compile Include="Logic\SortAnimals.cs" />
+    <Compile Include="Logic\Case.cs" />
     <Compile Include="Train.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wagon.cs" />

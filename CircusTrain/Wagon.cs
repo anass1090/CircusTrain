@@ -10,9 +10,10 @@ namespace CircusTrain
     public class Wagon
     {
         private readonly int Size;
+        private int CarnivoreSize { get; set; }
+        private bool CarnivoreInWagon { get; set; } = false;
         public List<Animal> AnimalsInWagon { get; private set; }
-        private bool carnivoreAdded = false;
-        public int WagonNumber { get; set; } = 1;
+        public int WagonNumber { get; set; }
 
         private int AvailableSpace
         {
@@ -27,7 +28,6 @@ namespace CircusTrain
                 return space;
             }
         }
-        private int carnivoreSize = 0;
 
         public Wagon()
         {
@@ -45,18 +45,18 @@ namespace CircusTrain
             // Because the carnivores will always try to eat something as large or smaller than them they have to be in their own wagon,
             // so I first take a random carnivore and put it in the wagon.
 
-            if (animal.Diet == Diets.Carnivore && carnivoreAdded == false)
+            if (animal.Diet == Diets.Carnivore && CarnivoreInWagon == false)
             {
-                carnivoreSize = (int)animal.Size;
+                CarnivoreSize = (int)animal.Size;
                 AnimalsInWagon.Add(animal);
                 animals.Remove(animal);
-                carnivoreAdded = true;
+                CarnivoreInWagon = true;
                 return true;
             }
 
             // Now I have to add herbivores that are bigger than the carnivore I just added until its full
 
-            if (animal.Diet == Diets.Herbivore && (int)animal.Size > carnivoreSize)
+            if (animal.Diet == Diets.Herbivore && (int)animal.Size > CarnivoreSize)
             {
                 if (AvailableSpace >= (int)animal.Size)
                 {

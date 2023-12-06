@@ -25,7 +25,7 @@ namespace CircusTrainWinForms
         {
             List<Animal> animals = testCase.Scenario((int)numSC.Value, (int)numMC.Value, (int)numLC.Value, (int)numSH.Value, (int)numMH.Value, (int)numLH.Value);
 
-            train.DistributeAnimals(animals);
+            train.AddWagons(animals);
 
             if(train.Wagons != null)
             {
