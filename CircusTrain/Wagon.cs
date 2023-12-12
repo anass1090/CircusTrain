@@ -35,33 +35,36 @@ namespace CircusTrain
             Size = 10;
         }
 
-        public bool TryAddingAnimal(List<Animal> animals, Animal animal)
+        public bool TryAddingAnimal(Animal animal)
         {
-            if (AvailableSpace == 0)
-            {
-                return false;
-            }
+            if (AvailableSpace == 0) return false;
+            
+            bool carnivoreAdded = TryAddingCarnivore(animal);
+            bool herbivoreAdded = TryAddingHerbivore(animal);
 
-            // Because the carnivores will always try to eat something as large or smaller than them they have to be in their own wagon,
-            // so I first take a random carnivore and put it in the wagon.
+            return carnivoreAdded || herbivoreAdded;
+        }
 
+        public bool TryAddingCarnivore(Animal animal)
+        {
             if (animal.Diet == Diets.Carnivore && CarnivoreInWagon == false)
             {
                 CarnivoreSize = (int)animal.Size;
                 AnimalsInWagon.Add(animal);
-                animals.Remove(animal);
                 CarnivoreInWagon = true;
                 return true;
             }
 
-            // Now I have to add herbivores that are bigger than the carnivore I just added until its full
+            return false;
+        }
 
+        public bool TryAddingHerbivore(Animal animal)
+        {
             if (animal.Diet == Diets.Herbivore && (int)animal.Size > CarnivoreSize)
             {
                 if (AvailableSpace >= (int)animal.Size)
                 {
                     AnimalsInWagon.Add(animal);
-                    animals.Remove(animal);
                     return true;
                 }
             }

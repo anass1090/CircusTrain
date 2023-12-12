@@ -10,50 +10,65 @@ namespace CircusTrain
     public class PlaceAnimals
     {
         private readonly SortAnimals sortAnimals = new SortAnimals();
+        private int wagonAmount;
 
         public List<Wagon> AllocateAnimals(List<Animal> animalsToAdd, bool isDescending = true)
         {
             List<Wagon> Wagons = new List<Wagon>();
             bool addedAllAnimals = false;
-            int WagonAmount = 0;
 
             animalsToAdd = isDescending ? sortAnimals.SortDesc(animalsToAdd) : sortAnimals.Sort(animalsToAdd);
+            wagonAmount = 0;
 
             while (animalsToAdd.Count > 0)
             {
-                bool addedAnimal = false;
-
-                foreach (Wagon wagon in Wagons)
-                {
-                    foreach (Animal animal in animalsToAdd)
-                    {
-                        addedAnimal = false;
-
-                        if (wagon.TryAddingAnimal(animalsToAdd, animal))
-                        {
-                            addedAnimal = true;
-                            if (animalsToAdd.Count == 0)
-                            {
-                                addedAllAnimals = true;
-                                break;
-                            }
-                            break;
-                        }
-                    }
-                }
+                bool addedAnimal = TryAddingAnimalToWagons(animalsToAdd, Wagons);
 
                 if (!addedAllAnimals && !addedAnimal)
                 {
-                    WagonAmount++;
-                    Wagon wagon = new Wagon
-                    {
-                        WagonNumber = WagonAmount
-                    };
-                    Wagons.Add(wagon);
+                    AddNewWagon(Wagons);
                 }
             }
 
             return Wagons;
+        }
+
+        public bool TryAddingAnimalToWagons(List<Animal> animalsToAdd, List<Wagon> wagons)
+        {
+            bool addedAnimal = false;
+
+            foreach (Animal animal in animalsToAdd)
+            {
+                foreach (Wagon wagon in wagons)
+                {
+                    if (wagon.TryAddingAnimal(animal))
+                    {
+                        animalsToAdd.Remove(animal);
+                        addedAnimal = true;
+
+                        if (animalsToAdd.Count == 0)
+                        {
+                            return true;
+                        }
+
+                        break;
+                    }
+                }
+                break;
+            }
+
+            return addedAnimal;
+        }
+
+        public void AddNewWagon(List<Wagon> Wagons)
+        {
+            wagonAmount++;
+            Wagon wagon = new Wagon
+            {
+                WagonNumber = wagonAmount
+            };
+
+            Wagons.Add(wagon);
         }
     }
 }
