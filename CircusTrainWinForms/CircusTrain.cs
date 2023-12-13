@@ -38,6 +38,7 @@ namespace CircusTrainWinForms
                 }
             }
         }
+
         private void ListWagons_SelectedIndexChanged(object sender, EventArgs e)
         {
             Wagon SelectedWagon = (Wagon)listWagons.SelectedItem;

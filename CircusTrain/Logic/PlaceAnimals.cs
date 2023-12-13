@@ -14,53 +14,35 @@ namespace CircusTrain
 
         public List<Wagon> AllocateAnimals(List<Animal> animalsToAdd, bool isDescending = true)
         {
-            List<Wagon> Wagons = new List<Wagon>();
-            bool addedAllAnimals = false;
-
-            animalsToAdd = isDescending ? sortAnimals.SortDesc(animalsToAdd) : sortAnimals.Sort(animalsToAdd);
             wagonAmount = 0;
+            List<Wagon> Wagons = new List<Wagon>();
+            animalsToAdd = isDescending ? sortAnimals.SortDesc(animalsToAdd) : sortAnimals.Sort(animalsToAdd);
 
-            while (animalsToAdd.Count > 0)
+            foreach (Animal animal in animalsToAdd)
             {
-                bool addedAnimal = TryAddingAnimalToWagons(animalsToAdd, Wagons);
-
-                if (!addedAllAnimals && !addedAnimal)
+                if (!TryAddingAnimalToWagons(animal, Wagons))
                 {
-                    AddNewWagon(Wagons);
+                    Wagons.Add(CreateNewWagonWithAnimal(animal));
                 }
             }
 
             return Wagons;
         }
 
-        public bool TryAddingAnimalToWagons(List<Animal> animalsToAdd, List<Wagon> wagons)
+        public bool TryAddingAnimalToWagons(Animal animal, List<Wagon> wagons)
         {
-            bool addedAnimal = false;
-
-            foreach (Animal animal in animalsToAdd)
+            foreach (Wagon wagon in wagons)
             {
-                foreach (Wagon wagon in wagons)
+                if (wagon.TryAddingAnimal(animal))
                 {
-                    if (wagon.TryAddingAnimal(animal))
-                    {
-                        animalsToAdd.Remove(animal);
-                        addedAnimal = true;
-
-                        if (animalsToAdd.Count == 0)
-                        {
-                            return true;
-                        }
-
-                        break;
-                    }
+                    return true;
                 }
-                break;
             }
 
-            return addedAnimal;
+            return false;
         }
 
-        public void AddNewWagon(List<Wagon> Wagons)
+        public Wagon CreateNewWagonWithAnimal(Animal animal)
         {
             wagonAmount++;
             Wagon wagon = new Wagon
@@ -68,7 +50,8 @@ namespace CircusTrain
                 WagonNumber = wagonAmount
             };
 
-            Wagons.Add(wagon);
+            wagon.TryAddingAnimal(animal);
+            return wagon;
         }
     }
 }

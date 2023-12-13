@@ -19,5 +19,11 @@ namespace CircusTrain
             Diet = diet;
             Size = size;
         }
+
+        public Animal(Diets diet, Sizes size)
+        {
+            Diet = diet;
+            Size = size;
+        }
     }
 }

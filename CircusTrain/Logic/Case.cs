@@ -27,7 +27,7 @@ namespace CircusTrain
         {
             for (int i = 0; i < count; i++)
             {
-                scenario.Add(new Animal("test", diet, size));
+                scenario.Add(new Animal(diet, size));
             }
         }
     }
